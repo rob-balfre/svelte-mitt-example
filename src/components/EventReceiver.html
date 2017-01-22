@@ -1,0 +1,28 @@
+<span>EventReceiver</span>
+<div class="borderedBox">
+    <ul>
+        {{#each events as event}}
+        <li>{{event.message}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+
+<script>
+  let emitter;
+
+  export default {
+    onrender () {
+      emitter = this.get('emitter');
+      emitter.on('Hello, World!', data => {
+        const currentEvents = this.get('events');
+        this.set('events', currentEvents.push(data))
+      });
+    },
+    data () {
+      return {
+        events: []
+      }
+    },
+  };
+</script>

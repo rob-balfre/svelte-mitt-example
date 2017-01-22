@@ -1,0 +1,35 @@
+<span>Root</span>
+<div class="borderedBox">
+
+<EventEmitter emitter="{{emitter}}"></EventEmitter>
+<EventReceiver emitter="{{emitter}}"></EventReceiver>
+
+</div>
+
+<script>
+  import EventEmitter from './EventEmitter.html';
+  import EventReceiver from './EventReceiver.html';
+  import mitt from 'mitt'
+
+  const emitter = mitt();
+
+  export default {
+    data () {
+      return {
+        emitter
+      }
+    },
+    components: {
+      EventEmitter,
+      EventReceiver,
+    }
+  };
+</script>
+
+<style>
+    .borderedBox {
+        border: 1px solid rgba(0,0,0, .2);
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+</style>

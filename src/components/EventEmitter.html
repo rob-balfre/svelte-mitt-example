@@ -1,0 +1,26 @@
+<span>Event Emitter</span>
+<div class="borderedBox">
+    <input bind:value='message' placeholder='Message'>
+    <button on:click='sendEvent(message)'>Send event</button>
+</div>
+
+<script>
+  let emitter;
+
+  export default {
+    onrender () {
+      emitter = this.get('emitter');
+    },
+    data() {
+      return {
+        message: null
+      }
+    },
+    methods: {
+      sendEvent(message) {
+        if (message)
+          emitter.emit('Hello, World!', {message: message});
+      }
+    }
+  };
+</script>
